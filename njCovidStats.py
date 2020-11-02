@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import datetime
 import csv
-
+import re
 
 def getNJCovidStats():
     driver = webdriver.Chrome()
@@ -30,7 +30,7 @@ def getNJCovidStats():
     # get all cases
     soup = BeautifulSoup(htmlPage, 'html.parser')
     featureList = soup.find_all("nav", class_="feature-list")
-    featureList = featureList[1]
+    featureList = featureList[2]
     featureList = "<html>" + str(featureList) + "</html>"
 
     countyObjList = []
@@ -43,7 +43,7 @@ def getNJCovidStats():
         strongElems = soup.find_all("strong")
 
         countyObj["name"] = strongElems[0].text.replace(u" County", u"")
-        countyObj["cases"] = strongElems[3].text.replace(u"\xa0", u"")
+        countyObj["cases"] = re.sub("\D", "", strongElems[3].text)
         countyObjList.append(countyObj)
         countyObj = {}
 
