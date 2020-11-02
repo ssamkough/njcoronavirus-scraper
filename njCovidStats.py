@@ -72,7 +72,7 @@ def getNJCovidStats():
     dt = datetime.datetime.today()
     month_day = str(dt.year) + "/" + str(dt.month) + "/" + str(dt.day)
 
-    description = "As of " + month_day + " at 2pm, " + totalCases + \
+    description = "As of " + month_day + ", " + totalCases + \
         " people have been confirmed to be tested positive in New Jersey across all 21 counties. There have been " + \
         totalDeaths + " confirmed deaths."
     print(description)
