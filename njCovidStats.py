@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import re
 import csv
-
+import re
 
 def getNJCovidStats():
     driver = webdriver.Chrome()
